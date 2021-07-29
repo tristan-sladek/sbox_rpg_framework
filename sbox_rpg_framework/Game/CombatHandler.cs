@@ -54,7 +54,9 @@ namespace sbox_rpg_framework.Game
                             turn = false;
                             break;                        
                         default:
-                            Console.WriteLine("Invalid Command!");
+                            //Console.WriteLine("Invalid Command!");
+                            AttackRandom(a, party2);
+                            turn = false;
                             break;
                     }
                 }
@@ -78,7 +80,8 @@ namespace sbox_rpg_framework.Game
                 target.PrintStatus();
             else
             {
-                Console.WriteLine(target.Name + " is slain!");                
+                Console.WriteLine(target.Name + " is slain!");
+                caster.XP += 20;
             }
             
             caster.CT = 0;

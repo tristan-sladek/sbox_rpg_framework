@@ -16,23 +16,26 @@ namespace sbox_rpg_framework
             player.isPlayer = true;
             player.Name = "Player";
 
-            CombatHandler combat = new CombatHandler();
-            combat.party1.Add(player);
-            Actor enemy = new Actor(player.LVL + new Random().Next(-1, 1));
-            enemy.Name = "Enemy";
-            combat.party2.Add(enemy);
-            
-            combat.Init();
-            while (combat.active)
+            while (true)
             {
-                combat.Update();
+                CombatHandler combat = new CombatHandler();
+                combat.party1.Add(player);
+                Actor enemy = new Actor(player.LVL + new Random().Next(-1, 1));
+                enemy.Name = "Enemy";
+                combat.party2.Add(enemy);
+                combat.Init();
+                while (combat.active)
+                {
+                    combat.Update();
+                }
+                Console.WriteLine("\n##########\n");
+                if (!player.IsAlive())
+                    player.Stats.CurHP = player.Stats.HP;
             }
 
 
 
 
-
-            Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n");
         }
     }
 }
