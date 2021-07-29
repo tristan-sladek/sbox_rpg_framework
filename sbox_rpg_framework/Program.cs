@@ -1,5 +1,6 @@
 ﻿using sbox_rpg_framework.Game.Actors;
 using System;
+using sbox_rpg_framework.Game;
 
 namespace sbox_rpg_framework
 {
@@ -7,16 +8,28 @@ namespace sbox_rpg_framework
     {
         static void Main(string[] args)
         {
-            Actor actor = new Actor();
-            actor.debug_LoadBaseActor();
-            Console.WriteLine(actor.ToString());
+            Actor player = new Actor(1);
+            player.Stats.SoftStats.HP = 6;
+            player.Stats.SoftStats.PA = 4;
+            player.Stats.SoftStats.SP = 2;
 
-            for(int i = 1; i < 10; i++)
-            {
-                actor.debug_LevelUp();
-                Console.WriteLine(actor.ToString());
-            }
+            player.isPlayer = true;
+            player.Name = "Player";
+
+            CombatHandler combat = new CombatHandler();
+            combat.party1.Add(player);
+            Actor enemy = new Actor(player.LVL + new Random().Next(-1, 1));
+            enemy.Name = "Enemy";
+            combat.party2.Add(enemy);
             
+            combat.Init();
+            while (combat.active)
+            {
+                combat.Update();
+            }
+
+
+
 
 
             Console.WriteLine("\n\n\n\n\n\n\n\n\n\n\n\n");
