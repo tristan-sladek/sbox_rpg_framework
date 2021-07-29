@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "sbox_rpg_framework/1.0.0": {
+        "runtime": {
+          "sbox_rpg_framework.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "sbox_rpg_framework/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
